@@ -5,6 +5,7 @@ typedef long long ll;
 typedef pair<int, int> ii;
 typedef vector<int> vi;
 typedef vector<ii> vii;
+typedef vector<string> vs;
 
 const int INF = 1e9;
 const int LLINF = 4e18;
