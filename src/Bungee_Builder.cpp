@@ -1,15 +1,10 @@
 #include <bits/stdc++.h>
-#include <bits/extc++.h>
 using namespace std;
-using namespace __gnu_pbds;
 
-#define rep(i, a, b) for(int i = a; i < (b); ++i)
-#define all(x) begin(x), end(x)
-#define sz(x) (int)(x).size()
 typedef long long ll;
-typedef pair<int, int> pii;
+typedef pair<int, int> ii;
 typedef vector<int> vi;
-typedef vector<pii> vii;
+typedef vector<ii> vii;
 typedef vector<string> vs;
 
 const int INF = 1e9;
@@ -73,8 +68,32 @@ void _print(T t, V... v)
 
 int main()
 {
-    cin.tie(NULL)->sync_with_stdio(0);
-    cin.exceptions(cin.failbit);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int n = 0;
+    cin >> n;
+    
+    if (n <= 2)
+        cout << 0 << endl;
+
+    int v = 0;
+
+    int temp = 0;
+    int prev = 0;
+    int minh = INF;
+    stack <int> pair
+    for(int i = 0; i < n; i++) {
+        if(i > 0) {
+            prev = temp;
+        }
+        cin >> temp;
+        
+        
+
+
+        
+    }
 
     return 0;
 }

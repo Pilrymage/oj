@@ -74,7 +74,24 @@ void _print(T t, V... v)
 int main()
 {
     cin.tie(NULL)->sync_with_stdio(0);
-    cin.exceptions(cin.failbit);
+    int N, Y;
+    cin >> N >> Y;
+    vi table(N, 1);
+    int temp;
+    rep(i, 0, Y) {
+        cin >> temp;
+        table[temp]--;
+    }
+    int foundCount = 0;
+    rep (i, 0, sz(table)) {
+        if(table[i]==1){
+            cout << i << endl;
+        } else {
+            foundCount++;
+        }
+    }
+    cout << "Mario got "<< foundCount << " of the dangerous obstacles." ;
+
 
     return 0;
 }
