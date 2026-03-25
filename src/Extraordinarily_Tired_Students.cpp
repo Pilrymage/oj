@@ -1,15 +1,10 @@
 #include <bits/stdc++.h>
-#include <bits/extc++.h>
 using namespace std;
-using namespace __gnu_pbds;
 
-#define rep(i, a, b) for(int i = a; i < (b); ++i)
-#define all(x) begin(x), end(x)
-#define sz(x) (int)(x).size()
 typedef long long ll;
-typedef pair<int, int> pii;
+typedef pair<int, int> ii;
 typedef vector<int> vi;
-typedef vector<pii> vii;
+typedef vector<ii> vii;
 typedef vector<string> vs;
 
 const int INF = 1e9;
@@ -71,10 +66,43 @@ void _print(T t, V... v)
 #define debug(x...)
 #endif
 
+struct stu
+{
+    int a;
+    int b;
+    queue<bool> isAwake;
+};
+
 int main()
 {
-    cin.tie(NULL)->sync_with_stdio(0);
-    cin.exceptions(cin.failbit);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n;
+    while (cin >> n, n)
+    {
+        vector<stu> student(n);
+        int a, b, c;
+        ll lcm = 0;
+        for (int i = 0; i < n; i++)
+        {
+            cin >> a >> b >> c;
+            student[i] = {a, b};
+            if(i == 0) lcm = a+b;
+            else lcm *= (a+b)/gcd(lcm,a+b);
+            for (int j = 0; j < a; j++)
+                student[i].isAwake.push(true);
+            for (int j = 0; j < b; j++)
+                student[i].isAwake.push(false);
+            for (int j = 0; j < c-1; j++)
+                student[i].isAwake.pop();
+        }
+        for(ll i = 0; i < lcm; i++) {
+            for(auto s : student) {
+                bool curr
+            }
+        }
+    }
 
     return 0;
 }
