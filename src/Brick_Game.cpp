@@ -38,6 +38,14 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    int TC; cin >> TC;
+    for(int tc = 1; tc <= TC; tc++) {
+        int N; cin >> N;
+        vi ages(N); rep(i, 0, N) cin >> ages[i];
+        sort(all(ages)); cout << "Case " << tc << ": " << ages[(N-1)/2]
+         << endl;
+    }
+
     return;
 }
 

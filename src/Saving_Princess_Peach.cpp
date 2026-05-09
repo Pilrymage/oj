@@ -38,6 +38,15 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    int N, Y; cin >> N >> Y;
+    bitset<100>bs(0);
+    int k; rep(i,0,Y) {cin >> k; bs.set(k);}
+    int obstacleTotal = 0;
+    rep(i,0,N) {
+        if(!bs[i]) cout << i << endl;
+        else obstacleTotal++;
+    }
+    cout << "Mario got "<< obstacleTotal <<" of the dangerous obstacles." << endl;
     return;
 }
 

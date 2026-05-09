@@ -38,6 +38,25 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    string line; cin >> line;
+    int len = sz(line);
+    vi dat(128,0);
+    for(char c : line) { dat[c]++; }
+    vi counts(4,0);
+    rep(i,33,127) { 
+        if(i == '_') {
+            counts[0] += dat[i];
+        } else if (islower(i)) {
+            counts[1] += dat[i];
+        } else if (isupper(i)) {
+            counts[2] += dat[i];
+        } else {
+            counts[3] += dat[i];
+        }
+     }
+    for(int i : counts) {
+        cout << setprecision(15) << double(i) / len << endl;
+    }
     return;
 }
 

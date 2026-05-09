@@ -38,12 +38,29 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    string quote_register;
+    int Qnum, period;
+    vi eventPeriods(3010);
+    std::priority_queue<pii, vii, greater<pii>> events;
+    while(cin >> quote_register, quote_register == "Register") {
+        cin >> Qnum >> period;
+        eventPeriods[Qnum]=period;
+        events.push({period, Qnum});
+    }
+    int K; cin >> K;
+
+    while(K--) {
+        auto [currentTime, Qnum] = events.top(); events.pop();
+        cout << Qnum << endl;
+        events.push({currentTime + eventPeriods[Qnum], Qnum});
+    }
     return;
 }
 
 int main()
 {
     cin.tie(NULL)->sync_with_stdio(0);
+    cin.exceptions(cin.failbit);
     solve();
 
     return 0;

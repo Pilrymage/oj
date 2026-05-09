@@ -36,8 +36,46 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #else
 #define debug(x...)
 #endif
-
+enum DNA {
+    A = 0, C, G, T
+};
 void solve() {
+    int TC; cin >> TC; while(TC--) {
+        int dnaCount, dnaLen; cin >> dnaCount >> dnaLen;
+        vector<vi> dnaApperance(dnaLen,vi(4,0));
+        string line;
+        rep(i,0,dnaCount) {
+            cin >> line;
+            for(int j = 0; j < dnaLen; j++) {
+                switch (line[j]) {
+                    case 'A': dnaApperance[j][A]++; break;
+                    case 'C': dnaApperance[j][C]++; break;
+                    case 'G': dnaApperance[j][G]++; break;
+                    case 'T': dnaApperance[j][T]++; break;
+                }
+            }
+        }
+        int errorTotal = 0;
+        for(auto p : dnaApperance) {
+            int maxCount = 0;            
+            int maxIndex = -1;
+            rep(i, 0, 4) {
+                if(p[i]> maxCount) {
+                    maxIndex = i;
+                    maxCount = p[i];
+                }
+            }
+            errorTotal += dnaCount - maxCount;
+            switch (maxIndex) {
+                case A: cout << 'A'; break;
+                case C: cout << 'C'; break;
+                case G: cout << 'G'; break;
+                case T: cout << 'T'; break;
+            }
+        }
+        cout << endl << errorTotal << endl;
+
+    }
     return;
 }
 

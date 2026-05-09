@@ -31,13 +31,22 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 
 #ifdef LOCAL
 #define debug(x...)                    \
-    std::cerr << "[" << #x << "] = ["; \
+    std::cerr << "[" << #x <<"] = ["; \
     _print(x)
 #else
 #define debug(x...)
 #endif
 
 void solve() {
+    int TC; cin >> TC; while(TC--) {
+        string line; cin >> line;
+        vi dat(128,0);
+        for(char c : line) {dat[c]++;}
+        vi ingredients = {dat['M'], dat['A']/3, dat['R']/2,dat['G'], dat['I'], dat['T']};
+        int pizzaCount = INF;
+        for(int i : ingredients)  {pizzaCount = min(pizzaCount, i);}
+        cout << pizzaCount << endl;
+    }
     return;
 }
 

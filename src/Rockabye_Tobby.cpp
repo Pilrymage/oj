@@ -36,8 +36,24 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #else
 #define debug(x...)
 #endif
-
+typedef tuple<int, int, string> Med;
 void solve() {
+    int TC; cin >> TC; while(TC--) {
+        int n, k; cin >> n >> k;
+        map<string, int> medications;
+        string name; int freq;
+        std::priority_queue<Med, vector<Med>, greater<Med>> events;
+        for(int priority = 1; priority <= n; priority++) {
+            cin >> name >> freq;
+            medications[name] = freq;
+            events.push({freq, priority, name});
+        }
+        rep(i, 0, k) {
+            auto [time, priority, name] = events.top();
+            cout << time << ' ' << name << endl;
+            events.pop(); events.push({time+medications[name], priority, name});
+        }
+    }
     return;
 }
 

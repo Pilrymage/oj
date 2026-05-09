@@ -38,6 +38,33 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    int TC; cin >> TC; rep(tc, 1, TC+1) {
+        int n; cin >> n;
+        vector<string> phoneNumbers(n);
+        string guessedNumber;
+        rep(i,0,n) {
+            cin >> phoneNumbers[i];
+        }
+        cin >> guessedNumber;
+        int len = sz(guessedNumber);
+        rep(i,0,n) {
+            int count = 0;
+            rep(j,0,len) {
+                if (guessedNumber[j] != phoneNumbers[i][j]) {
+                    count++;
+                }
+                if(count>=2) {
+                    phoneNumbers[i]="No";
+                    break;
+                }
+            }
+        }
+        cout << "Case " << tc << ":" << endl;
+        rep(i,0,n) {
+            if(phoneNumbers[i] != "No")
+                cout << phoneNumbers[i] << endl;
+        }
+    }
     return;
 }
 

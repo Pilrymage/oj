@@ -38,12 +38,30 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    int n; while(cin >> n, n) {
+        vi samples(n);
+        vi diff(n);
+        int peakCount = 0;
+        rep(i, 0, n) {
+            cin >> samples[i];
+        }
+        rep(i, 0, n) {
+            diff[i] = samples[(i+1)%n] - samples[i];
+        }
+        rep(i, 0, n) {
+            if(diff[i] * diff[(i+n-1)%n] < 0){
+                peakCount++;
+            }
+        }
+        cout << peakCount << endl;
+    }
     return;
 }
 
 int main()
 {
     cin.tie(NULL)->sync_with_stdio(0);
+    cin.exceptions(cin.failbit);
     solve();
 
     return 0;

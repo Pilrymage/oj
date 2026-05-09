@@ -38,12 +38,23 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    int g; string line; while (cin >> g, g) {
+        cin >> line;
+        int n = sz(line) / g;
+        for(int base = 0; base < g; base++) {
+            for(int i = 0; i < n / 2; i++) {
+                swap(line[base*n + i], line[base*n + n - 1 - i]);
+            }
+        }
+        cout << line << endl;
+    }
     return;
 }
 
 int main()
 {
     cin.tie(NULL)->sync_with_stdio(0);
+    cin.exceptions(cin.failbit);
     solve();
 
     return 0;

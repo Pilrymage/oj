@@ -38,6 +38,25 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    vi dat(128,0);
+    dat['B'] = dat['F'] = dat['P'] = dat['V'] = 1;
+    dat['C'] = dat['G'] = dat['J'] = dat['K'] =
+    dat['Q'] = dat['S'] = dat['X'] = dat['Z'] = 2;
+    dat['D'] = dat['T'] = 3;
+    dat['L'] = 4;
+    dat['M'] = dat['N'] = 5;
+    dat['R'] = 6;
+    string line;
+    while(cin >> line) {
+        char prev = 0;
+        string output = "";
+        for(char c : line) {
+            if(dat[c]>0 && dat[prev] != dat[c])
+                output += dat[c] + '0';
+            prev = c;
+        }
+        cout << output << endl;
+    }
     return;
 }
 

@@ -38,12 +38,48 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    int TC;
+    cin >> TC;
+    cin.ignore();
+    rep(tc, 0, TC) {
+        cin.ignore();
+        if(tc) cout << endl;
+
+        vi orders;
+        
+        string line;
+        getline(cin, line);
+        stringstream ss(line);
+
+        int i;
+        while(ss >> i) {
+            orders.push_back(i);
+        }
+
+        vs lst(sz(orders));
+        getline(cin, line);
+        stringstream st(line);
+        
+        string floatNum;
+        for(int i = 0; i < sz(orders); i++) {
+            st >> floatNum;
+            lst[orders[i]-1] = floatNum;
+        }
+
+        for(auto s : lst) {
+            cout << s << endl;
+        }
+        
+
+    }
+
     return;
 }
 
 int main()
 {
     cin.tie(NULL)->sync_with_stdio(0);
+    cin.exceptions(cin.failbit);
     solve();
 
     return 0;

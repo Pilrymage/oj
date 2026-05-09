@@ -38,6 +38,26 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    int TC; cin >> TC; rep(tc,1,TC+1) {
+        int n, l; cin >> n >> l;
+        vi mangoCounts(n);
+        int mangoTotal = 0;
+        rep(i,0,n) {
+            cin >> mangoCounts[i];
+            mangoTotal += mangoCounts[i];
+        }
+        int mangoLimit;
+        bool isWin = true;
+        rep(i,0,n) {
+            cin >> mangoLimit;
+            if(mangoLimit - mangoCounts[i] < 0) {
+                isWin = false; break;
+            }
+        }
+        if(l < mangoTotal) isWin = false;
+        cout << "Case " << tc << ": "
+        << (isWin ? "Yes" : "No") << endl;
+    }
     return;
 }
 

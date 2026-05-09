@@ -38,6 +38,26 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    vi createdCount(13);
+    vi requiredCount(13);
+    int tc = 0;
+    int S; while(cin >> S, S>=0) {
+        int hasCount = S;
+        createdCount[0] = 0;
+        rep(i,1,13) cin >> createdCount[i];
+        rep(i,1,13) cin >> requiredCount[i];
+
+        cout << "Case " << ++tc << ":\n";
+        for(int i = 1; i <= 12; i++) {
+            hasCount += createdCount[i-1];
+            if(hasCount >= requiredCount[i]) {
+                cout << "No problem! :D" << endl;
+                hasCount -= requiredCount[i];
+            } else {
+                cout << "No problem. :(" << endl;
+            }
+        }
+    }
     return;
 }
 

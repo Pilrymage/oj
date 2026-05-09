@@ -38,6 +38,24 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    int TC; cin >> TC; cin.ignore(); while(TC--) {
+        string line; getline(cin, line);
+        vi dat(128,0);
+        for(char c : line) { 
+            if(isalpha(c)) dat[tolower(c)]++; 
+        }
+        string maxChars = ""; int maxCount = 0;
+        rep(i,'a','z'+1) {
+            debug(maxChars);
+            if(dat[i] > maxCount) {
+                maxChars = i;
+                maxCount = dat[i];
+            } else if(dat[i] == maxCount) {
+                maxChars += i;
+            }
+        }
+        cout << maxChars << endl;
+    }
     return;
 }
 

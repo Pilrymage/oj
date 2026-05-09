@@ -38,6 +38,14 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    int N, R; while(cin >> N >> R) {
+        bitset<1010> bs(0);
+        rep(i,0,R) { int temp; cin >> temp; bs.set(temp); }
+        int f = 0;
+        rep(i,1,N) { if(!bs[i]) {if(f++) cout << ' '; cout << i;} }
+        if(R==N) cout << "*";
+        cout << endl;
+    }
     return;
 }
 

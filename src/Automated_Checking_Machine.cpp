@@ -38,6 +38,14 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    vi male(5,0), female(5,0);
+    while(cin >> male[0]) {
+        rep(i, 1, 5) cin >> male[i];
+        rep(i, 0, 5) cin >> female[i];
+        bool isCompatible = true;
+        rep(i, 0, 5) male[i] + female[i] == 1 ?:isCompatible = false ;
+        cout << (isCompatible?"Y":"N")<<endl;
+    }
     return;
 }
 

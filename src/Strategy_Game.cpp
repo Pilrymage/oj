@@ -38,6 +38,23 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    int J, R; while(cin >> J >> R){
+    vi scores(J,0);
+    int tmp = 0;
+    rep(i,0,R) rep(j,0,J) {
+        cin >> tmp;
+        scores[j]+=tmp;
+    } 
+    int maxScore = -1;
+    int scoreIndex = -1;
+    rep(i,0,J){
+        if(scores[i] >= maxScore) {
+            maxScore = scores[i];
+            scoreIndex = i;
+        }
+    }
+    cout << scoreIndex + 1 << endl;
+    }
     return;
 }
 

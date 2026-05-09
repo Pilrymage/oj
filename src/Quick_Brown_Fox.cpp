@@ -38,6 +38,18 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    int n; cin >> n; cin.ignore(); while(n--) {
+        string line; getline(cin, line);
+        vi dat(128,0);
+        for(char c : line) { if(isalpha(c)) dat[tolower(c)]++; }
+        bool isPangram = true;
+        string missing = "";
+        rep(i,'a', 'z'+1) {
+            if(dat[i]==0) { isPangram = false; missing += i; }
+        }
+        if(isPangram) cout << "pangram" << endl;
+        else cout << "missing " << missing << endl;
+    }
     return;
 }
 

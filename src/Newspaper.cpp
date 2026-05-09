@@ -38,6 +38,23 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    int TC; cin >> TC; while(TC--) {
+        int K; cin >> K;
+        vi dat(128,0); char tmp; int cent;
+        while(K--) {
+            cin >> tmp >> cent; dat[tmp] = cent;
+        }
+        int M; cin >> M; cin.ignore(); string line;
+        ll money = 0;
+        rep(i, 0, M) {
+            getline(cin, line);
+            for(const char &c: line) {
+                money += dat[c];
+            }
+        }
+        cout << money / 100 << ".";
+        cout << setfill('0') << setw(2) << money % 100 << "$" << endl;
+    }
     return;
 }
 

@@ -38,12 +38,30 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
-    return;
+    int tc = 0;
+    int n; while (cin >> n, n) {
+        tc++;
+        vi brickBoxes(n, 0);
+        int brickTotal = 0;
+        int minimumMoves = 0;
+        for(auto &e: brickBoxes) {
+            cin >> e;
+            brickTotal += e;
+        }
+        int brickAverage = brickTotal / n ;
+        for(auto &e: brickBoxes) {
+            if (e < brickAverage)
+                minimumMoves += brickAverage - e;
+        }
+        cout << "Set #" << tc << endl
+            << "The minimum number of moves is " << minimumMoves << "." << endl << endl;
+    }
 }
 
 int main()
 {
     cin.tie(NULL)->sync_with_stdio(0);
+    cin.exceptions(cin.failbit);
     solve();
 
     return 0;

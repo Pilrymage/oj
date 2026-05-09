@@ -38,12 +38,27 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
-    return;
+    int tc; cin >> tc; while(tc--) {
+        int n; cin >> n;
+        int p; cin >> p;
+        bitset<3660> days(0);
+        vi parties(p);
+        rep(i, 0, p) {
+            cin >> parties[i];
+            for(int j = parties[i]; j <= n; j+=parties[i]) {
+                if (j % 7 != 6 && j % 7 != 0)
+                    days.set(j);
+            }
+        }
+        cout << days.count() << endl;
+    }
 }
+
 
 int main()
 {
     cin.tie(NULL)->sync_with_stdio(0);
+    cin.exceptions(cin.failbit);
     solve();
 
     return 0;

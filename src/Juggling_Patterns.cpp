@@ -38,6 +38,48 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    enum hand {
+        LEFT,
+        RIGHT
+    };
+    string line;
+    while(cin >> line) {
+        cout << line << ": ";
+        int ballCount = 0;
+        line += line + line;
+        std::priority_queue<pair<int,hand>> times;
+        int t = 0;
+        for( char &c : line) {
+            ballCount += c - '0'; t++;
+            hand currentHand = (t%2==1)?LEFT:RIGHT;
+            if((c - '0')%2==1)
+                switch (currentHand) {
+                    case LEFT: currentHand=RIGHT; break;
+                    case RIGHT: currentHand=LEFT; break;
+                }
+
+            times.push({t + c - '0', currentHand});
+        }
+        if (ballCount % sz(line) != 0) {
+            cout << "invalid # of balls" << endl;
+            continue;
+        }
+        ballCount /= sz(line);
+        bool isValid = true;
+        pair<int, hand> prevTime;
+        while(!times.empty()) {
+            cerr << "["<< times.top().first << ' ' << times.top().second <<"] ";
+            if (times.top() == prevTime) {
+                isValid = false;
+                break;
+            }
+            prevTime = times.top(); times.pop(); 
+        }
+        cerr << endl;
+        isValid 
+        ? cout << "valid with "  << ballCount << " balls" << endl
+        : cout << "invalid pattern" << endl;
+    }
     return;
 }
 

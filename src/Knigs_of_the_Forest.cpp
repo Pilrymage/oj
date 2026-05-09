@@ -38,6 +38,31 @@ template <typename T, typename... V> void _print(T t, V... v) { __print(t); if (
 #endif
 
 void solve() {
+    ll k, n; cin >> k >> n;
+    ll y, p; cin >> y >> p;
+    vector<pair<ll,ll>> mooses(n+k-1);
+    mooses[0] = {y, p};
+    rep(i, 1, n+k-1) {
+        cin >> mooses[i].first >> mooses[i].second;
+    }
+    sort(all(mooses));
+    debug(mooses);
+    std::priority_queue<ll> pq;
+    rep(i, 0, k) {
+        pq.push(mooses[i].second);
+    }
+    rep(i,k,n+k) {
+        auto king_p = pq.top();
+        debug(king_p);
+        if(king_p == p) {
+            cout << 2011 + i - k << endl;
+            return;
+        }
+        else {
+            pq.pop(); pq.push(mooses[i].second);
+        }
+    }
+    cout << "unknown" << endl;
     return;
 }
 
